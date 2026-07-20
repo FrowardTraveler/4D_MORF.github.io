@@ -104,6 +104,15 @@
             border-radius: 8px;
             box-shadow: 0 2px 10px #cbd5e1;
         }
+        /* 新增：四张子图文字均匀分布样式 */
+        .subfig-desc {
+            display: flex;
+            justify-content: space-around;
+            width: 96%;
+            margin: 8px auto 20px;
+            font-size: 14px;
+            color: #475569;
+        }
         /* 资源按钮组 */
         .link-group {
             margin-top: 10px;
@@ -151,6 +160,11 @@
             .gif-col-4 {
                 max-width: 46%;
             }
+            /* 手机端子图文字自动换行 */
+            .subfig-desc {
+                flex-direction: column;
+                gap: 6px;
+            }
         }
     </style>
 </head>
@@ -164,6 +178,7 @@
         <h2>论文摘要</h2>
         <p class="abstract">
             针对稀疏视角刚流混合动态场景重建的几何、分布失真问题，本文提出融合物理先验的三维重建方法。传统神经辐射场统一变形建模无法适配刚体拓扑不变性与流体多样非刚性特征，重建易出现刚体漂移、流体失真且无法区分流体物性。本方法搭建材质感知多分支神经场，拆分刚体、流体建模：通过时序特征聚合与多帧约束修正刚体形变伪影；按不可压缩液体、颗粒流分别引入对应流体物理正则约束。实验证明，该方法可高精度重建多类介质交互场景，重建效果优于现有算法。
+        </p>
     </div>
 
     <!-- 核心实验结果GIF展示（一行4张对比图） -->
@@ -171,65 +186,57 @@
         <h2>实验结果可视化展示</h2>
         <p class="tip-text">本文方法与主流动态重建算法对比实验展示</p>
         <div class="gif-box">
-
+            <!-- 图1：沙子冲击刚体实验 -->
             <div class="gif-row-4">
                 <div class="gif-col-4">
-                    
                     <img src="gif/sand_video.gif" alt="GroudTrue">
                     <p class="fig-caption">(a) GroudTrue</p>
                 </div>
                 <div class="gif-col-4">
-                    
                     <img src="gif/sand_pinf.gif" alt="PINF">
                     <p class="fig-caption">(b) PINF</p>
                 </div>
                 <div class="gif-col-4">
-                    
                     <img src="gif/sand_PICT.gif" alt="PICT">
                     <p class="fig-caption">(c) PICT</p>
                 </div>
                 <div class="gif-col-4">
-                    
                     <img src="gif/sand_0408hybrid_gs_test_spiral_500000_rgb.gif" alt="本文方法重建结果">
                     <p class="fig-caption">(d) Ours 本文方法</p>
                 </div>
-                <p class="fig-caption">图1：沙子冲击刚体实验</p>
             </div>
+            <p class="fig-caption">图1：沙子冲击刚体实验</p>
 
-        
+            <!-- 图2：水流冲击水车实验 -->
             <div class="gif-row-4">
                 <div class="gif-col-4">
-                    
                     <img src="gif/video.gif" alt="GroudTrue">
                     <p class="fig-caption">(a) GroudTrue</p>
                 </div>
                 <div class="gif-col-4">
-                    
                     <img src="gif/water_pinf.gif" alt="PINF">
                     <p class="fig-caption">(b) PINF</p>
                 </div>
                 <div class="gif-col-4">
-                    
                     <img src="gif/water_PICT.gif" alt="PICT">
                     <p class="fig-caption">(c) PICT</p>
                 </div>
                 <div class="gif-col-4">
-                    
                     <img src="gif/water_0330_test_spiral_400000_rgb.gif" alt="本文方法重建结果">
                     <p class="fig-caption">(d) Ours 本文方法</p>
                 </div>
-                <p class="fig-caption">图2：水流冲击水车实验</p>
-
-                <img src="gif/output2.gif" alt="完整场景">
-                <div class="subfig-desc">
-                    <span>(a)颗粒流真值场景</span>
-                    <span>(b)仅刚体重建</span>
-                    <span>(c)仅流体重建</span>
-                    <span>(d)本文刚体-流体解耦联合重建结果</span>
-                </div>
-                
             </div>
+            <p class="fig-caption">图2：水流冲击水车实验</p>
+
+            <!-- 图3：四合一融合大图 + 均匀分布abcd标注 -->
+            <img src="gif/output2.gif" alt="完整场景">
             <p class="fig-caption">图3 刚体与流体解耦动态展示</p>
+            <div class="subfig-desc">
+                <span>(a)颗粒流真值场景</span>
+                <span>(b)仅刚体重建</span>
+                <span>(c)仅流体重建</span>
+                <span>(d)本文刚体-流体解耦联合重建结果</span>
+            </div>
         </div>
     </div>
 
